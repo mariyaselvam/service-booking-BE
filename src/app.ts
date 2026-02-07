@@ -1,0 +1,15 @@
+import express from "express";
+import "express-async-errors";
+import authRoutes from "./routes/auth.routes";
+import { errorHandler } from "./middlewares/error.middleware";
+
+const app = express();
+
+app.use(express.json());
+
+app.use("/api/auth", authRoutes);
+
+// LAST middleware
+app.use(errorHandler);
+
+export default app;
